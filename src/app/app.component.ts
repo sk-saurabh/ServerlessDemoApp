@@ -1,24 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { API } from '@aws-amplify/api';
+import PubSub from '@aws-amplify/pubsub';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
-  moviesList = [
-    { "title":"The Old Guard",
-      "year":"2020",
-      "rating": "10"
-    },
-    { "title":"The Lorax",
-      "year":"2020",
-      "rating": "9"
-    },
-    { "title":"Angel Has Fallen",
-      "year":"2020",
-      "rating": "8"
-    }
-  ];
+  moviesList = [];
+
+  ngOnInit(){
+
+    API.get('ServerlessDemoAppApi','/movies',{}).then(response =>{
+      this.moviesList= response;
+    }).catch(err =>{
+      console.log(`error occurred in fetching data: ${err}`)
+    });
+  }
 }

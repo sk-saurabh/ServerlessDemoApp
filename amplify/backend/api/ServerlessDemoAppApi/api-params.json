@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/movies",
+            "lambdaFunction": "serverlessDemoAppMovies",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "ServerlessDemoAppApi",
+    "apiName": "ServerlessDemoAppApi",
+    "functionArns": [
+        {
+            "lambdaFunction": "serverlessDemoAppMovies"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-serverlessdemoapp-dev-120940-authRole",
+        "unAuthRoleName": "amplify-serverlessdemoapp-dev-120940-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "serverlessDemoAppMovies",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
